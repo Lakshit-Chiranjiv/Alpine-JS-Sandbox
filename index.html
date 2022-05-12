@@ -75,5 +75,19 @@
         <br>
     </div>
 
+    <hr class="bg-black my-8">
+
+    <!-- x-bind -->
+    <h3 class="text-2xl font-semibold my-4">x-bind attribute</h3>
+    <div x-data="{isOpen1: true,isOpen2: true}">
+        <p class="bg-purple-200 p-4 rounded my-4" x-show="isOpen1" x-cloak x-transition>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem odit quam amet provident quod commodi nulla, iure vero, pariatur nisi quia. Quae alias vel earum quia quam eveniet sequi voluptas.</p>
+        <button id="btn" class="text-white rounded p-2 px-8 my-2 ease-in duration-300"
+        x-bind:class="isOpen1 ? 'bg-purple-400' : 'bg-red-400' " x-on:click="isOpen1 = !isOpen1">Toggle Para 1</button>
+        <br>
+        <p class="bg-yellow-200 p-4 rounded my-4" x-show="isOpen2" x-cloak x-transition>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem odit quam amet provident quod commodi nulla, iure vero, pariatur nisi quia. Quae alias vel earum quia quam eveniet sequi voluptas.</p>
+        <button id="btn" class="text-white rounded p-2 px-8 my-2 ease-in duration-300"
+        :class="isOpen2 ? 'bg-yellow-400' : 'bg-orange-400' " x-on:click="isOpen2 = !isOpen2">Toggle Para 2</button>
+    </div>
+
 </body>
 </html>
