@@ -108,8 +108,6 @@
             <p>Entered role : <span x-text="role" class="font-bold"></span></p>
             <p>Entered hobby : <span x-text="hobby" class="font-bold"></span></p>
         </div>
-
-        <br>
     </div>
 
     <hr class="bg-black my-8">
@@ -148,7 +146,37 @@
         </div>
     </div>
 
-    
+    <hr class="bg-black my-8">
+
+    <!-- x-for & Manipulating state -->
+    <h3 class="text-2xl font-semibold my-4">Manipulating state</h3>
+    <div x-data="{
+        Posts:[
+        {title: 'Post One', likes: 20, user: 'Arthur'},
+        {title: 'Post Two', likes: 25, user: 'Tommy'},
+        {title: 'Post Three', likes: 17, user: 'Ada'},
+        {title: 'Post Four', likes: 22, user: 'John'}
+        ],
+        title: '', likes: '', user: ''
+    }">
+        <div class="bg-blue-200 rounded p-8 my-4 flex gap-12 flex-wrap">
+            <template x-for="post in Posts">
+                <div class="bg-yellow-200 rounded p-6 w-1/5">
+                    <p class="font-bold text-xl" x-text="post.title"></p>
+                    <p class="text-3xl" x-text="post.likes"></p>
+                    <p x-text="post.user"></p>
+                </div>
+            </template>      
+        </div>
+
+        <div class="bg-orange-200 p-8 rounded my-4">
+            <input type="text" class="w-full h-8 rounded p-2 mb-8" placeholder="Enter Post Title..." x-model="title">
+            <input type="number" class="w-full h-8 rounded p-2 mb-8" placeholder="Enter Post likes..." x-model="likes">
+            <input type="text" class="w-full h-8 rounded p-2 mb-8" placeholder="Enter Post user..." x-model="user">
+
+            <button @click="Posts.push({title,likes,user})" class="bg-green-400 text-white w-full rounded p-2 px-8 my-2">Submit</button>
+        </div>
+    </div>
 
 
 
