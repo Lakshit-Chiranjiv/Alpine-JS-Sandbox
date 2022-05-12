@@ -7,14 +7,22 @@
     <script src="https://unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Alpine JS</title>
+
+    <style>
+        [x-cloak]{
+            display: none;
+        }
+    </style>
 </head>
 <body class="px-12">
     <h1 class="text-center text-4xl font-semibold m-6">Alpine JS Sandbox</h1>
 
     <!-- x-data | x-show | x-cloak -->
-    <h3 class="text-2xl font-semibold my-4">x-data attribute</h3>
-    <div x-data="{isOpen: false}">
-        <p class="bg-sky-200 p-4 rounded" x-show="isOpen">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem odit quam amet provident quod commodi nulla, iure vero, pariatur nisi quia. Quae alias vel earum quia quam eveniet sequi voluptas.</p>
+    <h3 class="text-2xl font-semibold my-4">x-data | x-show | x-cloak attributes</h3>
+    <div x-data="{isOpen1: false, isOpen2: true}">
+        <p class="bg-sky-200 p-4 rounded my-4" x-show="isOpen1" x-cloak>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem odit quam amet provident quod commodi nulla, iure vero, pariatur nisi quia. Quae alias vel earum quia quam eveniet sequi voluptas.</p>
+
+        <p class="bg-red-200 p-4 rounded my-4" x-show="isOpen2" x-cloak>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem odit quam amet provident quod commodi nulla, iure vero, pariatur nisi quia. Quae alias vel earum quia quam eveniet sequi voluptas.</p>
     </div>
 </body>
 </html>
