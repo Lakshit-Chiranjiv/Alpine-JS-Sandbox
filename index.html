@@ -37,6 +37,17 @@
         <button class="bg-red-400 text-white rounded p-2 px-8 my-2" x-on:click="isOpen2 = !isOpen2">Toggle Para 2</button>
     </div>
 
+    <hr class="bg-black my-8">
+
+    <!-- x-text -->
+    <h3 class="text-2xl font-semibold my-4">x-text attribute</h3>
+    <div x-data="{name: 'Lakshit', age: 20, role: 'Developer'}">
+        <p class="bg-green-200 p-4 rounded my-4">
+            My name is <span class="font-bold" x-text="name"></span>.<br>
+            I am <span class="font-bold" x-text="age"></span> years old.<br>
+            I am a <span class="font-bold" x-text="role"></span>.<br>
+        </p>
+    </div>
 
 </body>
 </html>
