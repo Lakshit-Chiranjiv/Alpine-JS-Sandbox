@@ -81,12 +81,35 @@
     <h3 class="text-2xl font-semibold my-4">x-bind attribute</h3>
     <div x-data="{isOpen1: true,isOpen2: true}">
         <p class="bg-purple-200 p-4 rounded my-4" x-show="isOpen1" x-cloak x-transition>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem odit quam amet provident quod commodi nulla, iure vero, pariatur nisi quia. Quae alias vel earum quia quam eveniet sequi voluptas.</p>
-        <button id="btn" class="text-white rounded p-2 px-8 my-2 ease-in duration-300"
+        <button class="text-white rounded p-2 px-8 my-2 ease-in duration-300"
         x-bind:class="isOpen1 ? 'bg-purple-400' : 'bg-red-400' " x-on:click="isOpen1 = !isOpen1">Toggle Para 1</button>
         <br>
         <p class="bg-yellow-200 p-4 rounded my-4" x-show="isOpen2" x-cloak x-transition>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem odit quam amet provident quod commodi nulla, iure vero, pariatur nisi quia. Quae alias vel earum quia quam eveniet sequi voluptas.</p>
-        <button id="btn" class="text-white rounded p-2 px-8 my-2 ease-in duration-300"
+        <button class="text-white rounded p-2 px-8 my-2 ease-in duration-300"
         :class="isOpen2 ? 'bg-yellow-400' : 'bg-orange-400' " x-on:click="isOpen2 = !isOpen2">Toggle Para 2</button>
+    </div>
+
+    <hr class="bg-black my-8">
+
+    <!-- x-model -->
+    <h3 class="text-2xl font-semibold my-4">x-model attribute</h3>
+    <div x-data="{name: '', role: '', hobby: ''}">
+        <div class="bg-orange-200 p-8 rounded my-4">
+            <label for="name" class="font-semibold">Name</label><br><br>
+            <input type="text" class="w-full h-12 rounded p-2 mb-8" placeholder="Enter Name..." x-model="name">
+            <label for="role" class="font-semibold">Role</label><br><br>
+            <input type="text" class="w-full h-12 rounded p-2 mb-8" placeholder="Enter Role..." x-model="role">
+            <label for="hobby" class="font-semibold">Hobby</label><br><br>
+            <input type="text" class="w-full h-12 rounded p-2 mb-8" placeholder="Enter Hobby..." x-model="hobby">
+
+            <button class="bg-green-400 text-white w-full rounded p-2 px-8 my-2">Submit</button>
+
+            <p>Entered name : <span x-text="name" class="font-bold"></span></p>
+            <p>Entered role : <span x-text="role" class="font-bold"></span></p>
+            <p>Entered hobby : <span x-text="hobby" class="font-bold"></span></p>
+        </div>
+
+        <br>
     </div>
 
 </body>
