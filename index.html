@@ -125,5 +125,32 @@
         <button class="bg-green-400 text-white rounded p-2 px-8 my-2" x-on:click="isOpen1 = !isOpen1">Toggle Para</button>
     </div>
 
+    <hr class="bg-black my-8">
+
+    <!-- x-for -->
+    <h3 class="text-2xl font-semibold my-4">x-for attribute</h3>
+    <div x-data="{
+        Posts:[
+        {title: 'Post One', likes: 20, user: 'Arthur'},
+        {title: 'Post Two', likes: 25, user: 'Tommy'},
+        {title: 'Post Three', likes: 17, user: 'Ada'},
+        {title: 'Post Four', likes: 22, user: 'John'}
+        ]
+    }">
+        <div class="bg-blue-200 rounded p-8 my-4 flex gap-12">
+            <template x-for="post in Posts">
+                <div class="bg-yellow-200 rounded p-6">
+                    <p class="font-bold text-xl" x-text="post.title"></p>
+                    <p class="text-3xl" x-text="post.likes"></p>
+                    <p x-text="post.user"></p>
+                </div>
+            </template>      
+        </div>
+    </div>
+
+    
+
+
+
 </body>
 </html>
