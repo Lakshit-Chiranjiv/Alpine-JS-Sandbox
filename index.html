@@ -232,6 +232,18 @@
         }">Demo Button</button>
     </div>
 
+    <hr class="bg-black my-8">
+
+    <!-- x-init & $watch -->
+    <h3 class="text-2xl font-semibold my-4">x-init attribute and $watch</h3>
+    <div x-data="{ countValue: 0,incrementTime: Date.now() }">
+        <p class="text-xl" x-text="countValue" x-init="$watch('countValue',()=>{
+            console.log(countValue);
+            incrementTime = Date.now();
+        })"></p>
+        <p>Value last incremented at <span class="font-bold" x-text="incrementTime"></span></p>
+        <button class="bg-green-400 text-white rounded p-2 px-8 my-2" @click="countValue++">Increment Count</button>
+    </div>
 
     <script>
         const fetchHTML = async() => {
