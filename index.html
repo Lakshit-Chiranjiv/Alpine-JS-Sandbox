@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Alpine JS</title>
 
     <style>
@@ -180,8 +181,8 @@
 
     <hr class="bg-black my-8">
 
-    <!-- x-ref -->
-    <h3 class="text-2xl font-semibold my-4">x-ref attribute</h3>
+    <!-- x-ref & $refs -->
+    <h3 class="text-2xl font-semibold my-4">x-ref attribute & $refs</h3>
     <div x-data>
         <p class="bg-green-200 p-4 rounded my-4" x-ref="somePara">
             Hello World!!
@@ -191,6 +192,26 @@
             $refs.somePara.classList.add('bg-pink-200');
         }">Change text and BG-color</button>
     </div>
+
+    <hr class="bg-black my-8">
+
+    <!-- x-html -->
+    <h3 class="text-2xl font-semibold my-4">x-html attribute</h3>
+    <div x-data="{ htmlData: null }">
+        <div class="bg-red-200 p-4 rounded my-4" x-html="htmlData ? htmlData : 'Initial Text'">
+            Initial Text
+        </div>
+        <button class="bg-red-400 text-white rounded p-2 px-8 my-2" @click="async()=>{
+            htmlData = await fetchHTML();
+        }">Fetch HTML</button>
+    </div>
+
+    <script>
+        const fetchHTML = async() => {
+            const data = (await axios.get('./demo.html')).data;
+            return data;
+        }
+    </script>
 
 </body>
 </html>
