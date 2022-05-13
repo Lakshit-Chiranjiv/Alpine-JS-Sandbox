@@ -206,11 +206,25 @@
         }">Fetch HTML</button>
     </div>
 
+    <hr class="bg-black my-8">
+
+    <!-- $el -->
+    <h3 class="text-2xl font-semibold my-4">$el</h3>
+    <div x-data>
+        <button class="bg-orange-400 text-white rounded p-2 px-8 my-2" @click="()=>{
+            $el.innerText = 'Text and BG-color changed!!';
+            $el.classList.add('bg-sky-400');
+            $el.classList.remove('bg-orange-400');
+        }">Change text and BG-color of the button</button>
+    </div>
+
     <script>
         const fetchHTML = async() => {
             const data = (await axios.get('./demo.html')).data;
             return data;
         }
+
+        document.querySelector('.hello').addEventListener('')
     </script>
 
 </body>
