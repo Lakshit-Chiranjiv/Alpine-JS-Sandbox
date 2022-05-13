@@ -218,13 +218,27 @@
         }">Change text and BG-color of the button</button>
     </div>
 
+    <hr class="bg-black my-8">
+
+    <!-- x-init -->
+    <h3 class="text-2xl font-semibold my-4">x-init attribute</h3>
+    <div x-data>
+        <button class="bg-blue-400 text-white rounded p-2 px-8 my-2" x-init="()=>{
+            setTimeout(()=>{
+                $el.innerText = 'Demo Button initialized';
+                $el.classList.add('bg-red-400');
+                $el.classList.remove('bg-blue-400');
+            },2000);
+        }">Demo Button</button>
+    </div>
+
+
     <script>
         const fetchHTML = async() => {
             const data = (await axios.get('./demo.html')).data;
             return data;
         }
-
-        document.querySelector('.hello').addEventListener('')
+        
     </script>
 
 </body>
