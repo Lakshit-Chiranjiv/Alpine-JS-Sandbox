@@ -263,6 +263,17 @@
         }">Send Message</button>
     </div>
 
+    <hr class="bg-black my-8">
+
+    <!-- $data -->
+    <h3 class="text-2xl font-semibold my-4">$data</h3>
+    <div x-data="{role: 'Developer'}">
+        <p class="bg-purple-200 p-4 rounded my-4">Role is <span class="font-bold" x-text="$data.role"></span></p>
+        <div x-data="{type: 'Ethereum Blockchain'}">
+            <p class="bg-lime-200 p-4 rounded my-4">Type of role is <span class="font-bold" x-text="$data.type"></span> <span class="font-bold" x-text="$data.role"></span></p>
+        </div>
+    </div>
+
     <script>
         const fetchHTML = async() => {
             const data = (await axios.get('./demo.html')).data;
