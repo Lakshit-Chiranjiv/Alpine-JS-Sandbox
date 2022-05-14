@@ -274,12 +274,109 @@
         </div>
     </div>
 
+    <hr class="bg-black my-8">
+
+    <!-- Stores & $store -->
+    <h3 class="text-2xl font-semibold my-4">Alpine Stores and $store</h3>
+    <div x-data>
+        <div class="p-4 rounded my-4" :class="$store.lightDarkMode.darkMode ? 'bg-zinc-700 text-white' : 'bg-zinc-300'">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor sunt quibusdam velit. Eaque, qui. Ea delectus, culpa placeat obcaecati repellat voluptas, eveniet eum est ut quaerat quibusdam magnam ex error?</p>
+            <button class="rounded p-2 px-8 my-4" :class="$store.lightDarkMode.darkMode ? 'bg-black text-white' : 'bg-zinc-300 border-black border-2'" @click="$store.lightDarkMode.toggleMode()">Toggle Mode</button>
+        </div>
+
+        <div class="p-4 rounded text-center my-4 bg-pink-200">
+            <h4 class="text-2xl font-bold">Chocolate store</h4>
+
+            <div class="flex gap-12 item-center justify-center my-6">
+
+                <template x-for="chocolate in ($store.ChocolateStore.chocolates)">
+                    <div class="w-1/4 rounded-lg bg-white border-2" :class="chocolate.borderColor">
+                        <h5 class="text-2xl font-bold" :class="chocolate.txtColor" x-text="chocolate.name"></h5>
+                        <h4 class="text-4xl font-extrabold">$<span x-text="chocolate.price"></span></h4>
+                        <button class="text-white rounded p-2 px-8 my-4" :class="chocolate.bgColor" @click="() => {
+                            if(chocolate.name === 'Kit-Kat')
+                                $store.ChocolateStore.buyKitKat();
+                            else if(chocolate.name === 'Munch')
+                                $store.ChocolateStore.buyMunch();
+                            else
+                                $store.ChocolateStore.buyDairyMilk();
+
+                        }">Buy One!!</button>
+                    </div>
+                </template>
+            </div>
+
+            <div class="bg-green-200 rounded p-4 my-4">
+                <h4 class="text-2xl font-bold mb-6">Your Cart</h4>
+                <h5>Kit Kat : <span class="text-xl font-bold mb-4" x-text="$store.ChocolateStore.kitKatInCart"></span></h5>
+                <h5>Munch : <span class="text-xl font-bold mb-4" x-text="$store.ChocolateStore.munchInCart"></span></h5>
+                <h5>Dairy Milk : <span class="text-xl font-bold mb-4" x-text="$store.ChocolateStore.dairyMilkInCart"></span></h5>
+
+                <h3 class="text-3xl font-bold my-6">Your Total Price : $<span x-text="$store.ChocolateStore.totalPrice"></span></h3>
+            </div>
+        </div>
+    </div>
+
     <script>
         const fetchHTML = async() => {
             const data = (await axios.get('./demo.html')).data;
             return data;
         }
-        
+
+        document.addEventListener('alpine:init',()=>{
+            Alpine.store('lightDarkMode',{
+                darkMode: false,
+
+                toggleMode(){
+                    this.darkMode = !this.darkMode;
+                }
+            }),
+            Alpine.store('ChocolateStore',{
+                totalPrice: 0,
+                bb: 6,
+                kitKatInCart: 0,
+                munchInCart: 0,
+                dairyMilkInCart: 0,
+                chocolates: [
+                    {
+                        name: 'Kit-Kat',
+                        price: 4,
+                        borderColor: 'border-red-500',
+                        bgColor: 'bg-red-400',
+                        txtColor: 'text-red-500'
+                    },
+                    {
+                        name: 'Munch',
+                        price: 7,
+                        borderColor: 'border-violet-500',
+                        bgColor: 'bg-violet-400',
+                        txtColor: 'text-violet-500'
+                    },
+                    {
+                        name: 'Dairy Milk',
+                        price: 6,
+                        borderColor: 'border-purple-500',
+                        bgColor: 'bg-purple-400',
+                        txtColor: 'text-purple-500'
+                    }
+                ],
+
+                buyKitKat(){
+                    this.totalPrice += this.chocolates[0].price;
+                    this.kitKatInCart++;
+                },
+                buyMunch(){
+                    this.totalPrice += this.chocolates[1].price;
+                    this.munchInCart++;
+                },
+                buyDairyMilk(){
+                    this.totalPrice += this.chocolates[2].price;
+                    this.dairyMilkInCart++;
+                }
+            })
+        })
+
+
     </script>
 
 </body>
