@@ -1,7 +1,7 @@
 # Alpine-JS-Sandbox
 
 <p align="center">
-  <a href="https://alpinejs.dev/" target="blank"><img src="https://alpinejs.dev/alpine_long.svg" width="320" alt="Alpine JS Logo" /></a>
+  <a href="https://alpinejs.dev/" target="blank"><img src="https://alpinejs.dev/alpine_long.svg" width="320" alt="Alpine JS Logo" style="background-color: white;"/></a>
 </p>
 
 
